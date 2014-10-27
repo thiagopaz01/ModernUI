@@ -1,7 +1,11 @@
 package br.com.thiagopaz.modernui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
     private View rectRed;
     private View rectBlue;
     private View rectBrown;
-    private View rectWhite;
+    //private View rectWhite;
     private View rectOrange;
     private View rectPurple;
     private View rectGreen;
@@ -41,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
         rectBrown = findViewById(R.id.rectBrown);
         rectRed = findViewById(R.id.rectRed);
         rectBlue = findViewById(R.id.rectBlue);
-        rectWhite = findViewById(R.id.rectWhite);
+        //rectWhite = findViewById(R.id.rectWhite);
         rectOrange = findViewById(R.id.rectOrange);
         rectPurple = findViewById(R.id.rectPurple);
         rectGreen = findViewById(R.id.rectGreen);
@@ -86,6 +90,22 @@ public class MainActivity extends ActionBarActivity {
         int green = Color.green(color);
         int blue = Color.blue(color);
 
+        /*if(progress > 70) {
+            red = (int) (255 - Math.abs(255 * Math.cos(Math.toRadians(1.8*40 + (Math.acos(Math.toRadians(red/255)))))));
+            green = (int) (255 - Math.abs(255 * Math.cos(Math.toRadians(1.8*70 + (Math.acos(Math.toRadians(green/255)))))));
+            blue = (int) (255 - Math.abs(255 * Math.cos(Math.toRadians(1.8*progress + (Math.acos(Math.toRadians(blue/255)))))));
+        }
+        else if(progress > 40) {
+            red = (int) (255 - Math.abs(255 * Math.cos(Math.toRadians(1.8*40 + (Math.acos(Math.toRadians(red/255)))))));
+            green = (int) (255 - Math.abs(255 * Math.cos(Math.toRadians(1.8*progress + (Math.acos(Math.toRadians(green/255)))))));
+        }
+        else {
+            red = (int) (20 + Math.abs(220 * Math.sin(Math.toRadians(1.8*progress))));
+        }
+*/
+
+
+        //Log.d(TAG, String.valueOf(red));
         red -= progress;
         green += progress;
         blue += 2*(progress);
@@ -120,8 +140,24 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_more_information) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.dialog_text);
+            // Add the buttons
+            builder.setPositiveButton(R.string.visit_moma, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.moma.org"));
+                    startActivity(browserIntent);
+                }
+            });
+            builder.setNegativeButton(R.string.not_now, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         return super.onOptionsItemSelected(item);
     }
