@@ -2,10 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#000000">
 
     <LinearLayout android:layout_height="0dp"
         android:layout_width="match_parent"
@@ -15,17 +14,23 @@
         <View android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"
-            android:background="#00F"/>
+            android:id="@+id/rectRed"
+            android:layout_margin="5dp"
+            android:background="#ff0000"/>
 
         <View android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"
-            android:background="#0FF"/>
+            android:id="@+id/rectBlue"
+            android:layout_margin="5dp"
+            android:background="#0000ff"/>
 
         <View android:layout_width="0dp"
             android:layout_weight="2"
+            android:id="@+id/rectGreen"
+            android:layout_margin="5dp"
             android:layout_height="match_parent"
-            android:background="#0F0"/>
+            android:background="#006700"/>
     </LinearLayout>
 
     <LinearLayout android:layout_height="0dp"
@@ -35,13 +40,17 @@
 
         <View android:layout_width="0dp"
             android:layout_weight="2"
+            android:id="@+id/rectYellow"
+            android:layout_margin="5dp"
             android:layout_height="match_parent"
             android:background="#FFFF00"/>
 
         <View android:layout_width="0dp"
             android:layout_weight="2"
+            android:id="@+id/rectWhite"
+            android:layout_margin="5dp"
             android:layout_height="match_parent"
-            android:background="#F0F0F0"/>
+            android:background="#ffffff"/>
     </LinearLayout>
 
     <LinearLayout android:layout_height="0dp"
@@ -51,18 +60,24 @@
 
         <View android:layout_width="0dp"
             android:layout_weight="2"
+            android:id="@+id/rectBrown"
+            android:layout_margin="5dp"
             android:layout_height="match_parent"
-            android:background="#00F"/>
+            android:background="#a5682a"/>
 
         <View android:layout_width="0dp"
             android:layout_weight="4"
+            android:id="@+id/rectOrange"
+            android:layout_margin="5dp"
             android:layout_height="match_parent"
-            android:background="#0FF"/>
+            android:background="#ffa500"/>
 
         <View android:layout_width="0dp"
             android:layout_weight="3"
+            android:id="@+id/rectPurple"
+            android:layout_margin="5dp"
             android:layout_height="match_parent"
-            android:background="#0F0"/>
+            android:background="#800080"/>
     </LinearLayout>
 
     <SeekBar android:id="@+id/seekBar" android:max="100"
