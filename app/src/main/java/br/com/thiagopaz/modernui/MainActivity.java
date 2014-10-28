@@ -106,22 +106,25 @@ public class MainActivity extends ActionBarActivity {
 
 
         //Log.d(TAG, String.valueOf(red));
-        red -= progress;
-        green += progress;
-        blue += 2*(progress);
+        if(progress > 70) {
+            red += 80;
+            green += 140;
+            blue += progress * 2;
+        }
+        else if(progress > 40) {
+            red += 80;
+            green += progress * 2;
+        }
+        else {
+            red += progress * 2;
+        }
 
         if(green > 255)
-            green -= 255;
-        else if(green < 0)
-            green = 255 - green;
+            green = 255 + (255- green);
         if(red > 255)
-            red -= 255;
-        else if(red < 0)
-            red = 255 - red;
+            red = 255 + (255 - red);
         if(blue > 255)
-            blue -= 255;
-        else if(blue < 0)
-            blue = 255 - blue;
+            blue = 255 + (255 - blue);
 
         rect.setBackgroundColor(Color.rgb(red,green,blue));
     }
